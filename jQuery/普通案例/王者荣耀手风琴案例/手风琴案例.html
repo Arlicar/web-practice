@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴案例</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .box {
+        background-image: url('images/bg.png');
+        height: 80px;
+        width: 800px;
+        margin: 100px auto;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+
+    .box ul {
+        width: 1200px;
+    }
+
+    .box ul li {
+        position: relative;
+        width: 69px;
+        height: 69px;
+        float: left;
+        margin: 0 3px;
+    }
+
+    .box ul #big {
+        display: none;
+    }
+
+    .box ul #small {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="box">
+
+        <ul>
+            <li style="width: 224px;">
+                <a href="#">
+                    <img src="images/c.png" id="big" style="display: block;">
+                    <img src="images/c1.jpg" width="69px" height="69px" id="small" style="display: none;">
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="images/h.png" id="big">
+                    <img src="images/h1.jpg" width="69px" height="69px" id="small">
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="images/l.png" id="big">
+                    <img src="images/l1.jpg" width="69px" height="69px" id="small">
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="images/m.png" id="big">
+                    <img src="images/m1.jpg" width="69px" height="69px" id="small">
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="images/t.png" id="big">
+                    <img src="images/t1.jpg" width="69px" height="69px" id="small">
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="images/w.png" id="big">
+                    <img src="images/w1.jpg" width="69px" height="69px" id="small">
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <img src="images/z.png" id="big">
+                    <img src="images/z1.jpg" width="69px" height="69px" id="small">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $(".box li").mouseenter(function () {
+                $(this).stop().animate({
+                    width: 224
+                }).find("#small").stop().fadeOut().siblings("#big").stop().fadeIn()
+                $(this).siblings().stop().animate({
+                    width: 69
+                }).find("#small").stop().fadeIn().siblings("#big").stop().fadeOut()
+            })
+        })
+    </script>
+</body>
+
+</html>

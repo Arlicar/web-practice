@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水波纹本</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #000;
+    }
+
+    .content {
+        position: relative;
+    }
+
+    .content h2 {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        font-size: 8em;
+    }
+
+    .content h2:nth-child(1) {
+        color: transparent;
+        -webkit-text-stroke: 2px #03a9f4;
+    }
+
+    .content h2:nth-child(2) {
+        color: #03a9f4;
+        animation: animate 4s infinite ease-in-out   ;
+    }
+    @keyframes animate{
+        0%,100%{
+            -webkit-clip-path: polygon(19% 66%, 31% 71%, 44% 72%, 57% 66%, 66% 58%, 76% 54%, 87% 55%, 100% 65%, 100%
+            100%, 0 100%, 0 55%, 9% 59%);
+            clip-path: polygon(19% 66%, 31% 71%, 44% 72%, 57% 66%, 66% 58%, 76% 54%, 87% 55%, 100% 65%, 100% 100%, 0
+            100%, 0 55%, 9% 59%);
+        }
+        50%{
+            -webkit-clip-path: polygon(20% 49%, 32% 54%, 40% 60%, 49% 66%, 62% 71%, 74% 73%, 86% 72%, 100% 65%, 100%
+            100%, 0 100%, 0 55%, 8% 52%);
+            clip-path: polygon(20% 49%, 32% 54%, 40% 60%, 49% 66%, 62% 71%, 74% 73%, 86% 72%, 100% 65%, 100% 100%, 0
+            100%, 0 55%, 8% 52%);
+        }
+    }
+</style>
+
+<body>
+    <div class="content">
+        <h2>Water</h2>
+        <h2>Water</h2>
+    </div>
+</body>
+
+</html>

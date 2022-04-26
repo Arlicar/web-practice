@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电梯导航</title>
+    <script src="js/jQuery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        position: relative;
+        width: 400px;
+        height: 800px;
+        background-color: #cdcdcd;
+        margin: 10px auto;
+        box-sizing: border-box;
+    }
+
+    div img {
+        width: 100%;
+        position: absolute;
+        left: 0;
+    }
+
+    ul {
+        position: sticky;
+        float: left;
+        top: 60px;
+        left: 0;
+        background-color: pink;
+        width: 60px;
+        height: 280px;
+        display: none;
+        z-index: 3;
+    }
+
+    li {
+        height: 70px;
+        width: 60px;
+        line-height: 70px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .current {
+        background-color: #fff;
+    }
+</style>
+
+<body>
+    <ul>
+        <li class="current">模块一</li>
+        <li>模块二</li>
+        <li>模块三</li>
+        <li>模块四</li>
+    </ul>
+    <div class="one">
+        <img data-lazy-src="img/1.jpg" alt="">
+        模块一
+    </div>
+    <div class="two">
+        <img data-lazy-src="img/2.jpg" alt="">
+        模块二</div>
+    <div class="three">
+        <img data-lazy-src="img/3.jpg" alt="">模块三</div>
+    <div class="four">
+        <img data-lazy-src="img/4.jpg" alt="">模块四</div>
+    <script>
+        $(function () {
+            var toolTop = $(".one").offset().top
+            console.log(toolTop)
+
+
+            function toggle() {
+                if ($(document).scrollTop() >= toolTop) {
+                    $("ul").fadeIn()
+                } else {
+                    $("ul").fadeOut()
+                }
+            }
+            $(window).scroll(function () {
+                toggle()
+
+                // 滚动页面使导航变化
+
+                $("div").each(function (i, ele) {
+                    if ($(document).scrollTop() >= $(ele).offset().top) {
+                        $("li").eq(i).addClass("current").siblings().removeClass()
+                    }
+                })
+
+            })
+        })
+        $("li").click(function () {
+            flag = false
+            console.log($(this).index())
+            // 通过索引值index来建立联系
+            var current = $("div").eq($(this).index()).offset().top + 3
+            //这里加'3'是因为操作发现每个div的上边界不能很好的贴合界面上框
+            //会有一丝空隙，也不知是什么原因，就加‘3’去除空隙了QAQ
+            $("body,html").stop().animate({
+                scrollTop: current
+            })
+            // $(this).addClass("current").siblings().removeClass()
+        })
+    </script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="dist/EasyLazyload.min.js"></script>
+    <script>
+        lazyLoadInit({
+            coverColor: "white",
+            coverDiv: "<h1>test</h1>",
+            offsetBottom: 0,
+            offsetTopm: 0,
+            showTime: 1100,
+            onLoadBackEnd: function (i, e) {
+                console.log("onLoadBackEnd:" + i);
+            },
+            onLoadBackStart: function (i, e) {
+                console.log("onLoadBackStart:" + i);
+            }
+        });
+    </script>
+</body>
+
+</html>

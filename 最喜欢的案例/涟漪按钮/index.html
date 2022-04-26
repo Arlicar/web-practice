@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        background: linear-gradient(to top right, #33cccc, #666699);
+    }
+
+    .btn {
+        position: relative;
+        border: none;
+        background: linear-gradient(to right, #33cccc, #ff99cc);
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: white;
+        border-radius: 30px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+        overflow: hidden;
+    }
+
+    .btn span {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        animation: anima 1s ease-in-out;
+        pointer-events: none;
+    }
+
+    @keyframes anima {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 0.8;
+        }
+
+        100% {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes anima {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 0.8;
+        }
+
+        100% {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+    <button class="btn">涟漪按钮</button>
+    <button class="btn">涟漪按钮</button>
+    <button class="btn">涟漪按钮</button>
+    <button class="btn">涟漪按钮</button>
+
+
+    <script>
+        const btns = document.querySelectorAll('button');
+        btns.forEach(btn => {
+            btn.addEventListener('click', e => {
+                let span = document.createElement('span')
+                span.style.left = e.offsetX + 'px'
+                span.style.top = e.offsetY + 'px'
+                btn.appendChild(span)
+                setTimeout(function () {
+                    span.remove()
+                }, 1000)
+            })
+        })
+    </script>
+</body>
+
+</html>

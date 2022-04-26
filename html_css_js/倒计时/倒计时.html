@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时效果</title>
+</head>
+<script>
+    function countDown(){
+        //  要用到时间戳，转换为毫秒来计算，所以‘+’号不能省略；
+        var nowTime = +new Date();
+        var inputTime = +new Date();
+        var times = (inputTime - nowTime)/1000;//毫秒转化为秒
+        var day = parseInt(times / 60 / 60 / 24);//parseInt为取整
+        day = day < 10 ? '0' + day : day;
+        var hour = parseInt(times / 60 / 60 % 24);
+        hour = hour < 10 ? '0' + hour : hour;
+        var minute = parseInt(times / 60 % 60);
+        minute = minute < 10 ? '0' + minute : minute;
+        var second = parseInt(times % 60);
+        second = second < 10 ? '0' + second : second;
+        return day + '天' + hour + '时' + minute + '分' + second +'秒';
+    }
+</script>
+<body>
+    
+</body>
+</html>

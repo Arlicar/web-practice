@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单全选取消全选</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    table{
+        margin: 100px auto;
+    }
+    thead tr{
+        height: 30px;
+        background-color: skyblue;
+    }
+    tbody tr{
+        height: 30px;
+    }
+    tbody td{
+        border-bottom: 1px solid #d7d7d7;
+        font-size: 18px;
+        color: blue;
+    }
+    .bg{
+        background-color: pink;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="j_cbAll">
+                </th>
+                <th>番剧</th>
+                <th>人气</th>
+            </tr>
+        </thead>
+        <tbody id="j_tb">
+            <tr>
+                <td>
+                    <input type="checkbox" >
+                </td>
+                <td>从零开始的异世界生活</td>
+                <td>高</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" >
+                </td>
+                <td>小林家的龙女仆s</td>
+                <td>高</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" >
+                </td>
+                <td>漂流少年</td>
+                <td>中</td>
+            </tr>
+        </tbody>
+        <script>
+            var j_cbAll = document.querySelector('#j_cbAll');
+            var j_tbs = document.querySelector('#j_tb').getElementsByTagName('input');
+            j_cbAll.onclick = function(){
+                for (let i = 0; i < j_tbs.length; i++) {
+                    j_tbs[i].checked = this.checked;
+                }
+            }
+            for (let i = 0; i < j_tbs.length; i++) {
+                j_tbs[i].onclick = function(){
+                    var flag = true;
+                    for(i=0;i<j_tbs.length;i++){
+                        if(j_tbs[i].checked == false){
+                            flag = false;
+                            break;
+                        }
+                    
+                    }
+                    j_cbAll.checked = flag;
+                }  
+            }
+        </script>
+</body>
+</html>

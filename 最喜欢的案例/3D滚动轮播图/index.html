@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D滚动轮播图</title>
+</head>
+<style>
+    .a{
+    width: 10%;
+    height: 400px;
+    position: relative;
+    top: 160px;
+    margin: auto;
+    transform-style: preserve-3d;
+    animation: 60s turn infinite ;
+    transition: 2s;
+    }
+    .a:hover{
+    animation-play-state: paused;
+    }
+    .a:active{
+    animation: 1s turn infinite linear;
+    }
+    .a2{
+    width: 150px;
+    height: 320px;
+    position: absolute;
+    /* left: 500px; */
+    right: 0;
+    border-radius: 20px;
+    }
+    .a2 img{
+    width: 100%;
+    border-radius: 20px;
+    opacity: .9;
+    }
+    .a2:nth-child(1) {
+    transform: translateZ(300px);
+    background-color: #c14c39;
+    }
+    .a2:nth-child(2) {
+    transform: rotateY(51deg) translateZ(300px);
+    background-color: #6e9c72;
+    }
+    .a2:nth-child(3) {
+    transform: rotateY(102.5deg) translateZ(300px);
+    background-color: #5e5f7a;
+    }
+    .a2:nth-child(4) {
+    transform: rotateY(154deg) translateZ(300px);
+    background-color: #f5eb98;
+    }
+    .a2:nth-child(5) {
+    transform: rotateY(204.5deg) translateZ(300px);
+    background-color: #50a3bc;
+    }
+    .a2:nth-child(6) {
+    transform: rotateY(256deg) translateZ(300px);
+    background-color: #f9a99a;
+    }
+    .a2:nth-child(7) {
+    transform: rotateY(307.5deg) translateZ(300px);
+    background-color: #f9a99a;
+    }
+    @keyframes turn {
+    0%{
+    transform:rotateY(0);
+    }
+    100%{
+    transform:rotateY(360deg);
+    }
+    }
+</style>
+<body>
+    <div class="a">
+        <div class="a2"><img src="./img/a2 (1).jpeg"></div>
+        <div class="a2"><img src="./img/a2 (2).jpeg"></div>
+        <div class="a2"><img src="./img/a2 (3).jpeg"></div>
+        <div class="a2"><img src="./img/a2 (4).jpeg"></div>
+        <div class="a2"><img src="./img/a2 (5).jpeg"></div>
+        <div class="a2"><img src="./img/a2 (6).jpeg"></div>
+        <div class="a2"><img src="./img/a2 (7).jpeg"></div>
+    </div>
+</body>
+</html>

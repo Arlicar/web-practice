@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉菜单</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav {
+        width: 300px;
+        margin: 100px auto;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .nav li {
+        position: relative;
+        width: 100px;
+        height: 30px;
+        list-style: none;
+        float: left;
+        cursor: pointer;
+    }
+
+    .nav li ul {
+        position: absolute;
+        top: 30px;
+        display: none;
+    }
+
+    .nav li ul li {
+        cursor: pointer;
+        float: none;
+        border: 1px solid #cdcdcd;
+    }
+
+    .nav li ul li:hover {
+        background-color: yellow;
+    }
+
+    a {
+        display: block;
+        width: 100px;
+        height: 30px;
+        text-decoration: none;
+        color: #000;
+        background-color: pink;
+    }
+
+    a:hover {
+        background-color: skyblue;
+    }
+</style>
+
+<body>
+
+    <ul class="nav">
+        <li>
+            <a href="#">漂流少年</a>
+            <ul>
+                <li>去看</li>
+                <li>去看</li>
+                <li>去看</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">漂流少年</a>
+            <ul>
+                <li>去看</li>
+                <li>去看</li>
+                <li>去看</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">漂流少年</a>
+            <ul>
+                <li>去看</li>
+                <li>去看</li>
+                <li>去看</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function () {
+            $(".nav>li").mouseover(function () {
+                $(this).children("ul").stop().slideDown(200)
+            })
+            $(".nav>li").mouseleave(function () {
+                $(this).children("ul").stop().slideUp(200)
+            })
+        })
+    </script>
+</body>
+
+</html>

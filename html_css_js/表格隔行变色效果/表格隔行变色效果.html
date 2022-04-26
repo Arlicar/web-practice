@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格隔行变色效果</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    table{
+        margin: 100px auto;
+    }
+    thead tr{
+        height: 30px;
+        background-color: skyblue;
+    }
+    tbody tr{
+        height: 30px;
+    }
+    tbody td{
+        border-bottom: 1px solid #d7d7d7;
+        font-size: 18px;
+        color: blue;
+    }
+    .bg{
+        background-color: pink;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>番剧</td>
+                <td>人气</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>从零开始的异世界生活</td>
+                <td>高</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>小林家的龙女仆s</td>
+                <td>高</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>漂流少年</td>
+                <td>中</td>
+            </tr>
+        </tbody>
+        <script>
+            var trs = document.querySelector('tbody').querySelectorAll('tr');
+            for (let i = 0; i < trs.length; i++) {
+                trs[i].onmouseenter = function(){
+                    // this.style.backgroundColor = "pink";
+                    this.className = "bg";
+                }
+                trs[i].onmouseleave = function(){
+                    // this.style.backgroundColor = "";
+                    this.className = "";
+                }
+            }
+        </script>
+    </table>
+</body>
+</html>

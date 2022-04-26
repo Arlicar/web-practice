@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜效果</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .box{
+        position: relative;
+        width: 216px;
+        height: 460px;
+        background-color: #fff;
+        margin: 100px auto;
+        cursor: move;
+    }
+    .fdj{
+        position: absolute;
+        display: none;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: rgba(255,255,255,.3);
+    }
+    .big{
+        position: absolute;
+        top: 0;
+        left: 216px;
+        width: 400px;
+        height: 400px;
+        background-color: #fff;
+        border: 1px solid;
+        display: none;
+        overflow: hidden;
+    }
+    .content{
+        
+        width: 212px;
+        height: 100%;
+    }
+    .content .demo{
+        width: 100%;
+        height: 100%;
+        border:2px solid
+    }
+    .content .big img{
+        position: absolute;
+        top: 0;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="fdj"></div>
+        <div class="content">
+            <img src="img/pic.jpg" class="demo">
+            <div class="big">
+                <img src="img/pic.jpg" class="bigImg">
+            </div>
+        </div>
+       
+    </div>
+    <script>
+        var box = document.querySelector('.box')
+        var content = document.querySelector('.content')
+        var fdj = document.querySelector('.fdj')
+        var big = document.querySelector('.big')
+        box.addEventListener('mouseover',function(){
+            fdj.style.display = "block"
+            big.style.display = "block"
+            
+        })
+        box.addEventListener('mouseout',function(){
+            fdj.style.display = "none"
+            big.style.display = "none"
+        })
+        // 这里一定要用box而不是content，要不然放大镜会闪
+        box.addEventListener('mousemove',function(e){
+                // 用offset要注意有没有父级，如果有，那只能得到与父级的距离
+                var x = e.pageX - box.offsetLeft
+                var y = e.pageY - box.offsetTop
+                var fdjX = x - fdj.offsetWidth/2
+                var fdjY= y - fdj.offsetHeight/2
+                var fdjMaxX = box.offsetWidth-fdj.offsetWidth
+                var fdjMaxY = box.offsetHeight-fdj.offsetHeight
+                if(fdjX<0){
+                    fdjX = 0
+                }
+                else if(fdjX>fdjMaxX){
+                    fdjX = fdjMaxX
+                }
+                if(fdjY<0){
+                    fdjY = 0
+                }
+                else if(fdjY>fdjMaxY){
+                    fdjY = fdjMaxY
+                }
+                fdj.style.top = fdjY + 'px'
+                fdj.style.left = fdjX + 'px'
+                var bigImg = document.querySelector('.bigImg')
+                var bigMaxX = big.offsetWidth - bigImg.offsetWidth
+                var bigMaxY = big.offsetHeight - bigImg.offsetHeight
+                var bigX = fdjX * bigMaxX / fdjMaxX
+                var bigY = fdjY * bigMaxY / fdjMaxY
+                console.log(bigX,bigY);
+                bigImg.style.left = bigX + 'px'
+                bigImg.style.top = bigY + 'px'
+            })
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左右式tab栏</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        background-color: #fff;
+        margin: 100px auto;
+        border: 1px solid #000;
+    }
+
+    .box ul {
+        width: 100px;
+        height: 400px;
+        background-color: #fff;
+    }
+
+    .box ul li {
+        width: 100px;
+        height: 98.4px;
+        background-color: seagreen;
+        border: 1px solid #000;
+        text-align: center;
+        line-height: 98.5px;
+        cursor: pointer;
+    }
+
+    .box ul li:hover {
+        background-color: grey;
+    }
+
+    .box ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .box .content div {
+        position: absolute;
+        top: 0;
+        left: 100px;
+        display: none;
+    }
+
+    .box .content .current {
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <a href="javascript:;">图片1</a>
+            </li>
+            <li>
+                <a href="javascript:;">图片2</a>
+            </li>
+            <li>
+                <a href="javascript:;">图片3</a>
+            </li>
+            <li>
+                <a href="javascript:;">图片4</a>
+            </li>
+        </ul>
+        <div class="content">
+            <div class="current">
+                <a href="javascript:;">
+                    <img src="img/1.jpg" width="300px" height="400px">
+                </a>
+            </div>
+            <div>
+                <a href="javascript:;">
+                    <img src="img/2.jpg" width="300px" height="400px">
+                </a>
+            </div>
+            <div>
+                <a href="javascript:;">
+                    <img src="img/3.jpg" width="300px" height="400px">
+                </a>
+            </div>
+            <div>
+                <a href="javascript:;">
+                    <img src="img/4.jpg" width="300px" height="400px">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        //! 这个是入口函数
+        $(function(){
+            //鼠标经过左侧的小例
+            $(".box ul li").mouseover(function(){
+                //得到当前小例的索引值
+                var index =  $(this).index()
+                //通过索引值来显示对应的图片
+                //不能用img元素,因为一个div里img只有一个，它没有兄弟.
+                // $(".content div").eq(index).show()
+                // //其余的兄弟隐藏
+                // $(".content div").eq(index).siblings().hide()
+                
+
+
+                //用链式编程更简洁
+                $(".content div").eq(index).show().siblings().hide()
+            })
+        })
+    </script>
+</body>
+
+</html>

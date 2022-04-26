@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input输入时会放大显示</title>
+</head>
+<style>
+    .search{
+        width: 300px;
+        margin: 100px auto;
+    }
+    .con {
+        position: relative;
+        height: 30px;
+        width: 250px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        line-height: 30px;
+        box-shadow: 6px 6px 6px -4px rgba(0, 0, 0, .3);
+        display: none;
+    }
+    .con::before{
+        content: '';
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 0;
+        height: 0;
+        line-height: 0;
+        font-size: 0;
+        border:10px solid transparent;
+        border-top-color: white;
+    }
+    input{
+        width: 300px;
+        height: 25px;
+        border: 1px solid skyblue;
+    }
+</style>
+<body>
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请随便输入点啥啥啥">
+    </div>
+    <script>
+        var input = document.querySelector('input')
+        var con = document.querySelector('.con')
+        document.addEventListener("keyup",function(){
+            if(input.value===""){
+                con.style.display = "none"
+            }
+            else{
+                con.style.display = "block"
+                con.innerHTML = input.value
+            }
+        })
+    </script>
+</body>
+</html>

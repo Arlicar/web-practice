@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击聚焦搜索框</title>
+</head>
+<style>
+    input{
+        display: block;
+        width: 300px;
+        height: 25px;
+        margin: 100px auto;
+        border: 1px solid skyblue;
+    }
+</style>
+<body>
+    点击s键，就可以将光标聚焦在搜索框。
+    <input type="text">
+    <script>
+        var input = document.querySelector('input')
+        document.addEventListener("keyup",function(e){
+            if(e.keyCode==83){
+                input.focus()
+            }
+        })
+    </script>
+</body>
+</html>

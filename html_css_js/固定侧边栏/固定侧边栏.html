@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>固定侧边栏</title>
+    <script src="windowRoll.js"></script>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .slider-bar{
+        position: absolute;
+        top: 400px;
+        right: 0;
+        width: 80px;
+        height: 300px;
+        background-color: seagreen;
+    }
+    .w{
+        width: 800px;
+        height: 400px;
+        background-color: rgba(0,0,0,.3);
+        margin: 20px auto;
+    }
+    .goBack{
+        display: none;
+        width: 80px;
+        height: 80px;
+        margin-top: 220px;
+        background-color: yellow;
+        text-align: center;
+        line-height: 80px;
+        cursor: pointer;
+    }
+    .main{
+        height: 1000px;
+    }
+</style>
+<body>
+    <div class="slider-bar">
+        <div class="goBack">返回顶部A</div>
+    </div>
+    <div class=" w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体区域</div>
+    <script>
+        var sliderBar = document.querySelector('.slider-bar')
+        var banner = document.querySelector('.banner')
+        var goBack = document.querySelector('.goBack')
+        var bannerTop = banner.offsetTop
+        //当我们侧边栏固定定位之后应该变化的值
+        var sliderBarTop = sliderBar.offsetTop - bannerTop
+        document.addEventListener('scroll',function(){
+            //如果是元素，则是element.pageYOffset
+            if(window.pageYOffset>=bannerTop)
+            {
+                sliderBar.style.position = "fixed"
+                sliderBar.style.top = sliderBarTop + 'px'
+                goBack.style.display = 'block'
+            }
+            else
+            {
+                sliderBar.style.position = "absolute"
+                sliderBar.style.top = 400 + 'px'
+                goBack.style.display = 'none'
+            }
+        })
+        goBack.addEventListener('click',function(){
+            animate(window,0)
+        })
+    </script>
+</body>
+</html>

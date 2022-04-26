@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小计功能</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        height: 235px;
+        width: 300px;
+        background-color: pink;
+        margin: 100px auto;
+        padding-left: 10px;
+        padding-top: 10px;
+        box-sizing: border-box;
+
+    }
+
+    .box ul li {
+        position: relative;
+        width: 250px;
+        height: 30px;
+        background-color: #fff;
+        margin-bottom: 7px;
+
+    }
+
+    .jian,
+    .jia {
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .jian {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 30px;
+        width: 20px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .jia {
+        position: absolute;
+        top: 0;
+        left: 60px;
+        height: 30px;
+        width: 20px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .content {
+        position: absolute;
+        top: 0px;
+        left: 20px;
+        height: 30px;
+        width: 40px;
+        text-align: center;
+        line-height: 30px;
+    }
+
+    .price {
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        left: 100px;
+    }
+
+    .sum {
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        left: 140px;
+    }
+
+    .sumNum {
+        position: absolute;
+        left: 0;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .sumPrice {
+        position: absolute;
+        left: 140px;
+        height: 30px;
+        line-height: 30px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <span class="jian">-</span>
+                <span class="content">1</span>
+                <span class="jia">+</span>
+                <span class="price">￥3</span>
+                <span class="sum">合计:￥3.00</span>
+            </li>
+            <li>
+                <span class="jian">-</span>
+                <span class="content">1</span>
+                <span class="jia">+</span>
+                <span class="price">￥4</span>
+                <span class="sum">合计:￥4.00</span>
+
+            </li>
+            <li>
+                <span class="jian">-</span>
+                <span class="content">2</span>
+                <span class="jia">+</span>
+                <span class="price">￥2</span>
+                <span class="sum">合计:￥4.00</span>
+
+            </li>
+            <li>
+                <span class="jian">-</span>
+                <span class="content">1</span>
+                <span class="jia">+</span>
+                <span class="price">￥1</span>
+                <span class="sum">合计:￥1.00</span>
+
+            </li>
+            <li>
+                <span class="jian">-</span>
+                <span class="content">3</span>
+                <span class="jia">+</span>
+                <span class="price">￥5</span>
+                <span class="sum">合计:￥15.00</span>
+
+            </li>
+            <li>
+                <span class="sumNum">总计:8</span>
+                <span class="sumPrice">总额:￥27.00</span>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $(".jia").click(function () {
+                var n = $(this).siblings(".content").text()
+                // console.log(n);
+                n++
+                // console.log(n);
+                $(this).siblings(".content").text(n)
+                var price = $(this).siblings(".price").text()
+                price = price.substr(1)
+                //toFixed(n),保留n位小数的方法
+                var sum = (price * n).toFixed(2)
+                // console.log(price);
+                $(this).siblings(".sum").text("合计:￥" + sum)
+                getSum()
+            })
+            $(".jian").click(function () {
+                var n = $(this).siblings(".content").text()
+                // console.log(n);
+                if (n === "1") {
+                    return false
+                }
+                n--
+                // console.log(n);
+
+                $(this).siblings(".content").text(n)
+                var price = $(this).siblings(".price").text()
+                price = price.substr(1)
+                var sum = (price * n).toFixed(2)
+                // console.log(price);
+                $(this).siblings(".sum").text("合计:￥" + sum)
+                getSum()
+            })
+        
+            function getSum(){
+                var count = 0//总数量
+                var all = 0//总价钱
+                $(".content").each(function(i,ele){
+                    count = count + parseInt($(ele).text())
+                })
+                // console.log(count);
+                $(".sumNum").text("总计:"+count)
+
+                $(".sum").each(function(i,ele){
+                    all = all + parseInt($(ele).text().substr(4))
+                })
+                all = all.toFixed(2)
+                $(".sumPrice").text("总额:￥"+all)
+            }
+        })
+    </script>
+</body>
+
+</html>

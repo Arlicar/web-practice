@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筋斗云</title>
+    <script src="animate.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .box {
+        position: relative;
+        height: 40px;
+        width: 330px;
+        margin: 100px auto;
+        border: 1px solid seagreen;
+    }
+    ul li {
+        float: left;
+        margin: 3px;
+        width: 60px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    ul .current{
+        font-weight: 600;
+        z-index: 2;
+    }
+    a{
+        text-decoration: none;
+        color: seagreen;
+    }
+    .cloud{
+        position: absolute;
+        top: 0;
+        left: 0%;
+        display: block;
+        width: 60px;
+        height: 20px;
+        background:url(icon-auth.png) no-repeat;
+        background-size: 50%;
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <span class="cloud"></span>
+        <ul>
+            <li class="current">
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">测试</a>
+            </li>
+            <li>
+                <a href="#">测试</a>
+            </li>
+            <li>
+                <a href="#">测试</a>
+            </li>
+            <li>
+                <a href="#">测试</a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var cloud = document.querySelector('.cloud')
+    var lis = document.querySelector('.box').querySelectorAll('li')
+    var start = 0
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].addEventListener('mouseenter',function(){
+            animate(cloud,this.offsetLeft)
+        })
+        lis[i].addEventListener('mouseleave',function(){
+            animate(cloud,start)
+        })
+        lis[i].addEventListener('click',function(){
+            start = this.offsetLeft
+        })
+    }
+    
+</script>
+</html>

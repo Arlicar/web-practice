@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换肤效果</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background: url(img/1.jpg) no-repeat center top;
+        background-size: 100%;
+    }
+    ul{
+        width: 410px;
+        overflow: hidden;
+        margin: 100px auto;
+        background-color: #fff;
+        padding-top: 3px;
+        
+    }
+    li{
+        float: left;
+        list-style: none;
+        margin: 0 1px;
+        cursor: pointer;
+    }
+    ul li img{
+       
+        width: 100px;
+        height: 60px;
+    }
+</style>
+<body>
+    点击图片切换背景
+    <ul>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+    </ul>
+    <script>
+        var imgs = document.querySelector('ul').querySelectorAll('img');
+        for(i = 0;i<imgs.length;i++){
+            imgs[i].onclick = function(){
+                document.body.style.backgroundImage = "url("+this.src+")";
+            }
+        }
+    </script>
+</body>
+</html>

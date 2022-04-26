@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微博发布</title>
+    <script src="../jQuery.min.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 350px;
+        margin: 100px auto;
+        border: 1px solid ;
+    }
+    li{
+        display: none;
+        position: relative;
+        list-style: none;
+    }
+    li a{
+        position: absolute;
+        right: 0;
+    }
+</style>
+<body>
+    <div class="box" id="weibo">
+        <span>微博发布</span>
+        <textarea name="" id="" cols="30" rows="10" class="text"></textarea>
+        <button>发布</button>
+        <ul>
+        </ul>
+    </div>
+    <script>
+        $(function(){
+            $("button").click(function(){
+                var li = $("<li></li>")
+                li.html($(".text").val() + "<a href='javascript:;'>删除</a>")
+                $("ul").prepend(li)
+                li.slideDown()
+                $(".text").val("")
+            })
+        })
+        //on可以给未来动态创建的元素绑定事件
+        $("ul").on("click","a",function(){
+            $(this).parent().slideUp(function(){
+                $(this).remove()
+            })
+        })
+    </script>
+</body>
+</html>

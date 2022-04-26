@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态生成表格</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0;
+
+    }
+    div{
+        width: 400px;
+        margin: 100px auto;
+    }
+    th{
+        background-color: #cdcdcd;
+        width: 100px;
+    }
+</style>
+<body>
+    <div>
+        <table border="1px" cellspacing="0">
+            <thead>
+                <th>id</th>
+                <th>番剧</th>
+                <th>人气</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var datas = [
+            {
+                id : '001',
+                name : '从零开始的异世界生活',
+                renqi : '高'
+            },
+            {
+                id : '002',
+                name : '小林家的龙女仆',
+                renqi : '高'
+            },
+            {
+                id : '003',
+                name : '漂流少年',
+                renqi : '高'
+            }
+        ]
+        var tbody = document.querySelector('tbody')
+        // 创建tr行
+        for (let i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr')
+            tbody.appendChild(tr)
+            // for循环遍历对象
+            for (const key in datas[i]) {
+                // 创建单元格
+                var td = document.createElement('td')
+                td.innerHTML = datas[i][key]
+                tr.appendChild(td)
+                
+            }
+            var td = document.createElement('td')
+            td.innerHTML = '<a href="javascript:;">删除</a>'
+            tr.appendChild(td)
+        }
+        var as = document.querySelectorAll('a')
+        for (let i = 0; i < as.length; i++) {
+            as[i].onclick = function(){
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+            
+        }
+    </script>
+</body>
+</html>

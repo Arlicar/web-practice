@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玻璃拟态</title>
+</head>
+<style>
+    @font-face {
+        font-family: ziti;
+        src: url(../字体/FZFWTongQPOPTJW.TTF);
+    }
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: ziti;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to right,#3846c5,#f2c85b,#c222b0);
+    }
+    .glass{
+        font-size: 150px;
+        font-weight: 600;
+        background-image: linear-gradient(to right,#f2c85b ,#c222b0,#3846c5);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    .card{
+        position: absolute;
+        width: 600px;
+        height: 350px;
+        border-radius: 20px;
+        background: linear-gradient(to right bottom,rgba(255,255,255,.6),rgba(255,255,255,.1));
+        backdrop-filter: blur(8px);
+        box-shadow: 10px 10px 20px rgba(0,0,0,.2);
+        border-top: 1px solid rgba(255,255,255,.8);
+        border-left: 1px solid rgba(255,255,255,.8);
+    }
+</style>
+<body>
+    <div class="glass">
+        小澈不会撤
+    </div>
+    <div class="card">
+
+    </div>
+</body>
+</html>

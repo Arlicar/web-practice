@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .bp {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: #8a57a5;
+        box-shadow: 10px 10px 30px #2a1636, -15px -15px 31px #aa58d6;
+        margin: 45px auto;
+        position: relative;
+        transition: 1s;
+        /* opacity: .7; */
+    }
+
+    .bplogo {
+        width: 1px;
+        height: 1px;
+        border-radius: 50%;
+        position: absolute;
+        z-index: -99;
+        outline: 0px solid #000;
+        transition: 5s outline, 5s;
+    }
+
+    .bp:hover .bplogo {
+        outline: 3000px solid rgba(0, 0, 0, 0.8);
+    }
+
+    .bp:hover {
+        transition: 1s;
+        background: #d080cb;
+        box-shadow: 9px 9px 18px #b16dad, -9px -9px 18px #ef93e9;
+    }
+
+    .bp>div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .bpa {
+        width: 280px;
+        height: 280px;
+        animation: bpa 60s linear infinite;
+        z-index: 100;
+        border-radius: 50%;
+    }
+
+    @keyframes bpa {
+        from {
+            transform: rotatez(0);
+        }
+
+        to {
+            transform: rotatez(360deg);
+        }
+    }
+
+    .bpa1 {
+        width: 4px;
+        height: 140px;
+        background-color: rgba(143, 66, 137, 0.9);
+        border-radius: 10px;
+        margin: auto;
+        box-shadow: -2px 1px 10px rgba(3, 0, 0, 0.4);
+    }
+
+    .bpb {
+        width: 220px;
+        height: 220px;
+        animation: bpb 360s linear infinite;
+        z-index: 300;
+        border-radius: 50%;
+    }
+
+    @keyframes bpb {
+        from {
+            transform: rotatez(0);
+        }
+
+        to {
+            transform: rotatez(360deg);
+        }
+    }
+
+    .bpb1 {
+        width: 4px;
+        height: 110px;
+        background-color: rgba(143, 66, 137, 0.7);
+        border-radius: 10px;
+        margin: auto;
+        box-shadow: -2px 1px 10px rgba(3, 0, 0, 0.5);
+    }
+
+    .bpc {
+        width: 160px;
+        height: 160px;
+        animation: bpc 3600s linear infinite;
+        border-radius: 50%;
+    }
+
+    @keyframes bpc {
+        from {
+            transform: rotatez(0);
+        }
+
+        to {
+            transform: rotatez(360deg);
+        }
+    }
+
+    .bpc1 {
+        width: 4px;
+        height: 80px;
+        background-color: rgba(143, 58, 137, 0.5);
+        border-radius: 10px;
+        margin: auto;
+        box-shadow: -2px 1px 10px rgba(3, 0, 0, 0.4);
+    }
+</style>
+
+<body>
+    <div class="topba">
+        <div class="bp">
+            <div class="background"></div>
+            <div class="bpa">
+                <div class="bpa1"></div>
+            </div>
+            <div class="bpb">
+                <div class="bpb1"></div>
+            </div>
+            <div class="bpc">
+                <div class="bpc1"></div>
+            </div>
+            <div class="bplogo"></div>
+        </div>
+    </div>
+</body>
+
+</html>

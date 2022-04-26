@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码可见切换</title>
+</head>
+<style>
+    .box{
+        position: relative;
+        width: 400px;
+        border-bottom: 1px solid #ccc;
+        margin: 100px auto;
+    }
+    .box input{
+        width: 370px;
+        height: 30px;
+        border: 0;
+        outline: none;
+    }
+    .box img{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 24px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="box">
+        <label >
+            <img src="img/close.png" id="eye">
+        </label>
+        <input type="password" placeholder="请输入密码" id="pwd">
+    </div>
+    <script>
+        var eye = document.getElementById('eye');
+        var pwd = document.getElementById('pwd');
+        var flag = 0;
+        eye.onclick = function(){
+            if(flag == 0){
+                flag = 1;
+                pwd.type = "text";
+                eye.src = "img/open.png";
+            }else{
+                flag = 0;
+                pwd.type = "password";
+                eye.src = "img/close.png";
+            }
+        }
+    </script>
+</body>
+</html>
